@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador OECD 423 - Toxicidade Aguda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simulador de Toxicidade Aguda OECD 423</h1>
+        <p class="subtitle">50 substâncias com doses padronizadas OECD</p>
+        
+        <div class="form-group">
+            <label for="substance">Substância:</label>
+            <select id="substance">
+                <option value="">-- Selecione uma substância --</option>
+                <!-- As opções serão preenchidas pelo JavaScript -->
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="dose">Dose (mg/kg):</label>
+            <select id="dose">
+                <option value="">-- Selecione uma dose --</option>
+                <option value="0">0 mg/kg (controle)</option>
+                <option value="5">5 mg/kg</option>
+                <option value="50">50 mg/kg</option>
+                <option value="300">300 mg/kg</option>
+                <option value="2000">2000 mg/kg</option>
+                <option value="5000">5000 mg/kg</option>
+                <option value="custom">Outra dose...</option>
+            </select>
+            <input type="number" id="custom-dose" placeholder="Digite a dose em mg/kg..." step="0.1" min="0">
+        </div>
+        
+        <button id="simulate-btn">Executar Simulação</button>
+        
+        <div id="result" class="result">
+            <h2>Resultado da Simulação</h2>
+            <div id="result-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
