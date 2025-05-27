@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Simulador de Toxicidade Aguda OECD 423</h1>
-        <p class="subtitle">50 substâncias com doses padronizadas OECD</p>
+        <p class="subtitle">50 substâncias com doses padronizadas OECD e resultados probabilísticos</p>
         
         <div class="form-group">
             <label for="substance">Substância:</label>
@@ -38,7 +38,11 @@
         
         <div id="result" class="result">
             <h2>Resultado da Simulação</h2>
-            <div id="result-content"></div>
+            <div id="result-content">
+                <!-- Aqui será inserido dinamicamente:
+                - Tabela com substância, dose, probabilidade e resultado
+                - Mensagem sobre aleatoriedade quando aplicável -->
+            </div>
         </div>
     </div>
 
