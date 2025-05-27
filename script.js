@@ -201,10 +201,6 @@ function displayResult(substance, dose, result) {
                 <td>${dose} mg/kg</td>
             </tr>
             <tr>
-                <th>Probabilidade de letalidade</th>
-                <td>${(result.probability * 100).toFixed(1)}%</td>
-            </tr>
-            <tr>
                 <th>Resultado</th>
                 <td><strong>${result.status}</strong></td>
             </tr>
