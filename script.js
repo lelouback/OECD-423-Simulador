@@ -126,11 +126,17 @@ function calculateDeathProbability(dl50, dose) {
 // Determinar resultado conforme OECD 423
 function determineResult(probability) {
     if (probability > 0.7) {
-        return { status: "MORTO", class: "dead" };
-    } else if (probability < 0.5) {
-        return { status: "VIVO", class: "alive" };
+        return { status: "MORTO", class: "dead", probability: probability };
+    } else if (probability < 0.3) {
+        return { status: "VIVO", class: "alive", probability: probability };
     } else {
-        return { status: "SINAIS DE INTOXICAÇÃO", class: "intoxicated" };
+        // Faixa de incerteza (30-70%): resultado aleatório baseado na probabilidade
+        const random = Math.random(); // Número aleatório entre 0 e 1
+        if (random < probability) {
+            return { status: "MORTO", class: "dead", probability: probability };
+        } else {
+            return { status: "VIVO", class: "alive", probability: probability };
+        }
     }
 }
 
@@ -184,7 +190,7 @@ function displayResult(substance, dose, result) {
     resultElement.className = `result ${result.class}`;
     resultElement.style.display = 'block';
     
-    resultContent.innerHTML = `
+   resultContent.innerHTML = `
         <table>
             <tr>
                 <th>Substância</th>
@@ -195,10 +201,16 @@ function displayResult(substance, dose, result) {
                 <td>${dose} mg/kg</td>
             </tr>
             <tr>
+                <th>Probabilidade de letalidade</th>
+                <td>${(result.probability * 100).toFixed(1)}%</td>
+            </tr>
+            <tr>
                 <th>Resultado</th>
                 <td><strong>${result.status}</strong></td>
             </tr>
         </table>
+        ${result.probability >= 0.3 && result.probability <= 0.7 ? 
+            '<p class="random-note">Resultado determinado aleatoriamente com base na probabilidade calculada</p>' : ''}
     `;
 }
 
