@@ -147,3 +147,11 @@ th {
         padding: 10px;
     }
 }
+
+.random-note {
+    font-style: italic;
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
